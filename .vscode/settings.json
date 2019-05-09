@@ -1,0 +1,7 @@
+{
+    "minify.js": {
+        "mangle": {
+            "reserved": ["vm", "dom", "$scope", "$element", "$http", "$timeout", "$document", "$compile", "scope", "element", "attrs"]
+        }
+    }
+}
