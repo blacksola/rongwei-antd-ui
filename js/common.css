@@ -12,7 +12,7 @@ input[type="checkbox"] {
     line-height: unset;
 }
 
-/* #region 公共页头样式  */
+/* #region page-header样式  */
 
 .datax-header {
     width: 100%;
@@ -21,7 +21,66 @@ input[type="checkbox"] {
 
 .datax-header .datax-logo {
     width: 50px;
+    height: 40px;
     float: left;
+    background-color: #333846;
+    color: #ffffff;
+    -webkit-transition: width 0.3s ease-in-out;
+    -o-transition: width 0.3s ease-in-out;
+    transition: width 0.3s ease-in-out;
+}
+
+.datax-logo .logo-full {
+    display: none;
+}
+
+.datax-logo .logo-mini {
+    display: block;
+}
+
+.datax-logo .logo-mini img {
+    width: 34px;
+    height: 16px;
+    margin: 13px 8px;
+    cursor: pointer;
+}
+
+.datax-header .datax-header-nav {
+    background-color: #38425d;
+    color: rgb(250, 250, 250);
+    height: 40px;
+    margin-left: 50px;
+    -webkit-transition: margin-left 0.3s ease-in-out;
+    -o-transition: margin-left 0.3s ease-in-out;
+    transition: margin-left 0.3s ease-in-out;
+}
+
+/* #endregion */
+
+/* #region  sidebar样式 */
+
+.datax-sidebar {
+    position: fixed;
+    height: 100%;
+    width: 50px;
+    -webkit-transition: width 0.3s ease-in-out;
+    -o-transition: width 0.3s ease-in-out;
+    transition: width 0.3s ease-in-out;
+}
+
+.datax-sidebar-mini {
+    
+}
+
+/* #endregion */
+
+/* #region  wrapper样式 */
+
+.datax-wrapper-content {
+    margin-left: 50px;
+    -webkit-transition: margin-left 0.3s ease-in-out;
+    -o-transition: margin-left 0.3s ease-in-out;
+    transition: margin-left 0.3s ease-in-out;
 }
 
 /* #endregion */
