@@ -23,6 +23,219 @@
             $scope.searchTerm = '';
         };
 
+        $scope.fullMenu=true
+        $scope.switchMenu = function () {
+            var menuWidth = '50px'
+            if ($scope.fullMenu) {
+                getByClass('datax-sidebar').addClass('datax-sidebar-mini')
+            } else {
+                getByClass('datax-sidebar').removeClass('datax-sidebar-mini')
+                menuWidth = '195px'
+            }
+            getByClass('datax-logo').css('width', menuWidth)
+            getByClass('datax-header-nav').css('margin-left', menuWidth)
+            getByClass('datax-sidebar').css('width', menuWidth)
+            
+            getByClass('datax-wrapper-content').css('margin-left', menuWidth)
+            
+            $scope.fullMenu = !$scope.fullMenu
+        }
+        $scope.switchMenu()
+
+        $scope.dxAlertMsg = function () {
+            dxAlertMsg()
+        }
+
+        $scope.changeSelect = function (value) {
+            console.log(value)
+            console.log('$scope.selectedVegetables', $scope.selectedVegetables)
+            console.log('$scope.selectedVegetables2', $scope.selectedVegetables2)
+        }
+        $scope.dateModel = ''
+        $scope.test1Method = function () {
+            console.log('test1Method')
+            $scope.selectedVegetables = 'Corn'
+        }
+        $scope.dxSelectValue = [0, 5]
+        $scope.users = [1, 2, 4, 5, 7, 8, 9, 'sad', 'asd']
+        $scope.isCheck = false
+        $scope.checkList = [{
+            'name': 'zhangsan',
+            'code': '0',
+            'dept': '人事'
+        }, {
+            'name': 'zhangsan1',
+            'code': '1',
+            'dept': '人事'
+        }, {
+            'name': 'zhangsan2',
+            'code': '2',
+            'dept': '财务'
+        }, {
+            'name': 'zhangsan3',
+            'code': '3',
+            'dept': '人事'
+        }, {
+            'name': 'zhangsan4',
+            'code': '4',
+            'dept': '财务'
+        }, {
+            'name': 'zhangsan5',
+            'code': '5',
+            'dept': '秘书'
+        }, {
+            'name': 'zhangsan6',
+            'code': '6',
+            'dept': '销售'
+        }, {
+            'name': 'zhangsan7',
+            'code': '7',
+            'dept': '销售'
+        }, {
+            'name': 'zhangsan8',
+            'code': '8',
+            'dept': '销售'
+        }, {
+            'name': 'zhangsan9',
+            'code': '9',
+            'dept': '销售'
+        }, ]
+        console.log(_.groupBy($scope.checkList, 'dept'))
+        $scope.radioModel = 2333
+        $scope.checkResultList = angular.copy($scope.checkList)
+        $scope.test2Method = function () {
+            console.log('$scope.selectedVegetables', $scope.selectedVegetables)
+        }
+
+        $scope.changeTransfer = function (obj) {
+            console.log('changeTransfer', obj)
+        }
+
+        // region 测试方法
+
+        $scope.columns = [{
+                title: 'Full Name',
+                width: 100,
+                dataIndex: 'name',
+                key: 'name',
+                fixed: 'left',
+            },
+            {
+                title: 'Age',
+                width: 100,
+                dataIndex: 'age',
+                key: 'age',
+                fixed: 'left',
+            },
+            {
+                title: 'Column 1',
+                dataIndex: 'address',
+                key: '1',
+                width: 150,
+            },
+            {
+                title: 'Column 2',
+                dataIndex: 'address',
+                key: '2',
+                width: 150,
+            },
+            {
+                title: 'Column 3',
+                dataIndex: 'address',
+                key: '3',
+                width: 150,
+            },
+            {
+                title: 'Column 4',
+                dataIndex: 'address',
+                key: '4',
+                width: 150,
+            },
+            {
+                title: 'Column 5',
+                dataIndex: 'address',
+                key: '5',
+                width: 150,
+            },
+            {
+                title: 'Column 6',
+                dataIndex: 'address',
+                key: '6',
+                width: 150,
+            },
+            {
+                title: 'Column 7',
+                dataIndex: 'address',
+                key: '7',
+                width: 150,
+            },
+            {
+                title: 'Column 8',
+                dataIndex: 'address',
+                key: '8'
+            }
+        ];
+
+        $scope.data = [];
+        for (let i = 0; i < 100; i++) {
+            $scope.data.push({
+                name: `Edrward ${i}`,
+                age: 32,
+                address: `London Park no. ${i}`,
+                address: `London Park no. ${i}`,
+                address: `London Park no. ${i}`,
+                address: `London Park no. ${i}`,
+                address: `London Park no. ${i}`,
+                address: `London Park no. ${i}`,
+                address: `London Park no. ${i}`,
+                address: `London Park no. ${i}`,
+            });
+        }
+
+        /* #region   */
+        $scope.testGetMethod = function (ev) {
+            dxHttp.getData("/api/test/testGetMethod?parameter1=canshu1", $mdDialog).then(function (rs) {
+                if (rs.data.status == 'success') {
+                    console.log(rs.data.data)
+                }
+            })
+        }
+
+        $scope.testPostMethod = function (ev) {
+            dxHttp.postData("/api/test/testPostMethod", {
+                parameter1: 'canshu1',
+                parameter2: 'canshu2'
+            }, $mdDialog).then(function (rs) {
+                if (rs.data.status == 'success') {
+                    console.log(rs.data.data)
+                }
+            })
+        }
+
+        $scope.showDialog = function () {
+            $mdDialog.show({
+                contentElement: '#myDialog',
+                clickOutsideToClose: true
+            });
+        }
+
+        /* #endregion */
+        // #endregion 
+
+        $timeout(function () {
+            // new PerfectScrollbar('.app-main-content', {
+            //     'suppressScrollX': true
+            // })
+        })
+
+    })
+
+    document.getElementById("dataxSidebar").setAttribute("ng-app","dataxSidebarApp");
+    document.getElementById("dataxSidebar").setAttribute("ng-controller","dataxSidebarController");
+
+    var app = angular.module('dataxSidebarApp', ['dataxUtils', 'dataxUI']);
+
+    app.controller('dataxSidebarController', function ($scope, $element, $timeout, $rootScope, $window, $compile, $http, dxHttp, dom) {
         $scope.menuList = [{
             "id": "1",
             "name": "数据管理",
@@ -563,211 +776,31 @@
             }]
         }]
 
-        $scope.fullMenu=false
-        $scope.switchMenu = function () {
-            var menuWidth = '50px'
-            if ($scope.fullMenu) {
-                getByClass('datax-sidebar').addClass('datax-sidebar-mini')
-            } else {
-                getByClass('datax-sidebar').removeClass('datax-sidebar-mini')
-                menuWidth = '195px'
+        $scope.subMenu = []
+
+        $scope.showSubMenu = function (menu, ev) {
+            $scope.subMenuObj = menu
+            var subMenuEle = $compile(angular.element('<div class="datax-menu-children-wrapper" ng-mouseleave="closeMenu()">\
+                <ul>\
+                    <li><i class="fa {{ subMenuObj.icon }}" style="position: absolute; left: 15px; top: 12px;"></i>{{ subMenuObj.name }}</li>\
+                    <li ng-repeat="item in subMenu">{{ item.name }}</li>\
+                </ul>\
+            </div>'))($scope)
+            if (menu.child && menu.child.length > 0) {
+                getByClass('datax-menu-children-wrapper').remove()
+                $scope.subMenu = menu.child
+                getByEle(document.body).append(subMenuEle)
+                subMenuEle[0].style['top'] = dom.offset(ev.target).top + 'px';
+                subMenuEle[0].style['left'] = '50px';
+                subMenuEle[0].style['opacity'] = 1;
             }
-            getByClass('datax-logo').css('width', menuWidth)
-            getByClass('datax-header-nav').css('margin-left', menuWidth)
-            getByClass('datax-sidebar').css('width', menuWidth)
-            
-            getByClass('datax-wrapper-content').css('margin-left', menuWidth)
-            
-            $scope.fullMenu = !$scope.fullMenu
         }
 
-        $scope.dxAlertMsg = function () {
-            dxAlertMsg()
+        $scope.closeMenu = function () {
+            getByClass('datax-menu-children-wrapper').remove()
         }
-
-        $scope.changeSelect = function (value) {
-            console.log(value)
-            console.log('$scope.selectedVegetables', $scope.selectedVegetables)
-            console.log('$scope.selectedVegetables2', $scope.selectedVegetables2)
-        }
-        $scope.dateModel = ''
-        $scope.test1Method = function () {
-            console.log('test1Method')
-            $scope.selectedVegetables = 'Corn'
-        }
-        $scope.dxSelectValue = [0, 5]
-        $scope.users = [1, 2, 4, 5, 7, 8, 9, 'sad', 'asd']
-        $scope.isCheck = false
-        $scope.checkList = [{
-            'name': 'zhangsan',
-            'code': '0',
-            'dept': '人事'
-        }, {
-            'name': 'zhangsan1',
-            'code': '1',
-            'dept': '人事'
-        }, {
-            'name': 'zhangsan2',
-            'code': '2',
-            'dept': '财务'
-        }, {
-            'name': 'zhangsan3',
-            'code': '3',
-            'dept': '人事'
-        }, {
-            'name': 'zhangsan4',
-            'code': '4',
-            'dept': '财务'
-        }, {
-            'name': 'zhangsan5',
-            'code': '5',
-            'dept': '秘书'
-        }, {
-            'name': 'zhangsan6',
-            'code': '6',
-            'dept': '销售'
-        }, {
-            'name': 'zhangsan7',
-            'code': '7',
-            'dept': '销售'
-        }, {
-            'name': 'zhangsan8',
-            'code': '8',
-            'dept': '销售'
-        }, {
-            'name': 'zhangsan9',
-            'code': '9',
-            'dept': '销售'
-        }, ]
-        console.log(_.groupBy($scope.checkList, 'dept'))
-        $scope.radioModel = 2333
-        $scope.checkResultList = angular.copy($scope.checkList)
-        $scope.test2Method = function () {
-            console.log('$scope.selectedVegetables', $scope.selectedVegetables)
-        }
-
-        $scope.changeTransfer = function (obj) {
-            console.log('changeTransfer', obj)
-        }
-
-        // region 测试方法
-
-        $scope.columns = [{
-                title: 'Full Name',
-                width: 100,
-                dataIndex: 'name',
-                key: 'name',
-                fixed: 'left',
-            },
-            {
-                title: 'Age',
-                width: 100,
-                dataIndex: 'age',
-                key: 'age',
-                fixed: 'left',
-            },
-            {
-                title: 'Column 1',
-                dataIndex: 'address',
-                key: '1',
-                width: 150,
-            },
-            {
-                title: 'Column 2',
-                dataIndex: 'address',
-                key: '2',
-                width: 150,
-            },
-            {
-                title: 'Column 3',
-                dataIndex: 'address',
-                key: '3',
-                width: 150,
-            },
-            {
-                title: 'Column 4',
-                dataIndex: 'address',
-                key: '4',
-                width: 150,
-            },
-            {
-                title: 'Column 5',
-                dataIndex: 'address',
-                key: '5',
-                width: 150,
-            },
-            {
-                title: 'Column 6',
-                dataIndex: 'address',
-                key: '6',
-                width: 150,
-            },
-            {
-                title: 'Column 7',
-                dataIndex: 'address',
-                key: '7',
-                width: 150,
-            },
-            {
-                title: 'Column 8',
-                dataIndex: 'address',
-                key: '8'
-            }
-        ];
-
-        $scope.data = [];
-        for (let i = 0; i < 100; i++) {
-            $scope.data.push({
-                name: `Edrward ${i}`,
-                age: 32,
-                address: `London Park no. ${i}`,
-                address: `London Park no. ${i}`,
-                address: `London Park no. ${i}`,
-                address: `London Park no. ${i}`,
-                address: `London Park no. ${i}`,
-                address: `London Park no. ${i}`,
-                address: `London Park no. ${i}`,
-                address: `London Park no. ${i}`,
-            });
-        }
-
-        /* #region   */
-        $scope.testGetMethod = function (ev) {
-            dxHttp.getData("/api/test/testGetMethod?parameter1=canshu1", $mdDialog).then(function (rs) {
-                if (rs.data.status == 'success') {
-                    console.log(rs.data.data)
-                }
-            })
-        }
-
-        $scope.testPostMethod = function (ev) {
-            dxHttp.postData("/api/test/testPostMethod", {
-                parameter1: 'canshu1',
-                parameter2: 'canshu2'
-            }, $mdDialog).then(function (rs) {
-                if (rs.data.status == 'success') {
-                    console.log(rs.data.data)
-                }
-            })
-        }
-
-        $scope.showDialog = function () {
-            $mdDialog.show({
-                contentElement: '#myDialog',
-                clickOutsideToClose: true
-            });
-        }
-
-        /* #endregion */
-        // #endregion 
-
-        $timeout(function () {
-            // new PerfectScrollbar('.app-main-content', {
-            //     'suppressScrollX': true
-            // })
-        })
 
     })
-
+    angular.bootstrap(document.getElementById("testPageController"), ["testPage"]);
 
 })()

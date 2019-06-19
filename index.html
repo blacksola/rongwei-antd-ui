@@ -25,8 +25,21 @@
             <i class="icon dx-font dx-menu"></i>
         </div>
     </div>
-    <div class="datax-sidebar">
-        ===
+    <div class="datax-sidebar" id="dataxSidebar">
+        <div class="datax-sidebar-wrapper">
+            <ul class="datax-menu-wrapper">
+                <li class="datax-menu-item" ng-repeat="menu in menuList">
+                    <div ng-if="!fullMenu" class="datax-menu-icon-wrapper" ng-mouseover="showSubMenu(menu, $event)">
+                        <i class="fa {{ menu.icon }}"></i>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="datax-menu-children-wrapper">
+        <ul>
+            <li ng-repeat="item in subMenu">{{ item.name }}</li>
+        </ul>
     </div>
     <div class="wrapper datax-wrapper-content" id="mainWrapper">
         <div class="content-wrapper" style="position: relative;">
